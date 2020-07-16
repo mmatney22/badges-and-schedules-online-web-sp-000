@@ -3,16 +3,20 @@ def badge_maker(name)
 end
 
 def batch_badge_creator(attendees)
-  attendees.map {|attendee| badge_maker(attendee) }
+  attendees.map {|attendee| badge_maker(attendee)}
 end
 
 def assign_rooms(speakers)
-  room_assignments = []
-  speakers.each_with_index {|speaker, index| room_assignments << "Hello, #{speaker}! You'll be assigned to room #{index + 1}!"}
-  room_assignments
+  speakers.each_with_index.map do |speaker, i|
+    "Hello, #{speaker}! You'll be assigned to room #{i + 1}!"
+  end
 end
 
 def printer(attendees)
-  batch_badge_creator(attendees).each {|badge| puts badge }
-  assign_rooms(attendees).each {|room| puts room}
+  batch_badge_creator(attendees).each do |badge|
+    puts badge
+  end
+  assign_rooms(attendees).each do |room|
+    puts room
+  end
 end
